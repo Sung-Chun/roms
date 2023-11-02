@@ -134,6 +134,7 @@ done
 # CPP definitions.
 
 export   ROMS_APPLICATION=UPWELLING
+export ROMS_ROOT_DIR=/home/zstar/WORK/roms_project
 
 # Set a local environmental variable to define the path to the directories
 # where the ROMS source code is located (MY_ROOT_DIR), and this project's
@@ -199,8 +200,8 @@ export     MY_PROJECT_DIR=${PWD}
 # out. Any string value (including off) will evaluate to TRUE in
 # conditional if-statements.
 
- export           USE_MPI=on            # distributed-memory parallelism
- export        USE_MPIF90=on            # compile with mpif90 script
+#export           USE_MPI=on            # distributed-memory parallelism
+#export        USE_MPIF90=on            # compile with mpif90 script
 #export         which_MPI=intel         # compile with mpiifort library
 #export         which_MPI=mpich         # compile with MPICH library
 #export         which_MPI=mpich2        # compile with MPICH2 library
@@ -209,11 +210,11 @@ export     MY_PROJECT_DIR=${PWD}
 
 #export        USE_OpenMP=on            # shared-memory parallelism
 
- export              FORT=ifort
-#export              FORT=gfortran
+#export              FORT=ifort
+ export              FORT=gfortran
 #export              FORT=pgi
 
-#export         USE_DEBUG=on            # use Fortran debugging flags
+ export         USE_DEBUG=on            # use Fortran debugging flags
  export         USE_LARGE=on            # activate 64-bit compilation
 
 #--------------------------------------------------------------------------

@@ -103,3 +103,54 @@ Registered users of **ROMS** have access to:
   ```
   https://www.myroms.org/wiki
   ```
+
+# How to build
+
+* Reference: https://atmosfera.usm.my/posts/post20-5-2022-1.html
+* Reference: http://blog.dhkim.info/ROMS_Tutor/
+* Tutorial: https://indico.ictp.it/event/a14262/session/12/contribution/64/material/slides/1.pdf
+
+## Pre-requisites
+
+```
+$ sudo apt-get update
+$ sudo apt-get install gcc gfortran
+$ sudo apt-get install libnetcdf-dev libnetcdff-dev
+$ nc-config --all
+```
+
+## Building source code
+소스코드 다운로드
+```
+$ cd WORK
+$ mkdir roms_project
+$ cd roms_project
+$ git clone https://github.com/Sung-Chun/roms.git
+```
+
+
+build 폴더를 만들고 필요한 파일을 복사
+```
+$ mkdir build
+$ cd build
+$ cp ../roms/ROMS/Bin/build_roms.sh .
+$ cp ../roms/ROMS/Include/upwelling.h .
+$ cp ../roms/ROMS/External/roms_upwelling.in .
+$ cp ../roms/ROMS/External/varinfo.yaml .
+
+$ nano roms_upwelling.in
+$ VARNAME=./varinfo.yaml
+
+$ cp ../roms/User/Functionals/ana_smflux.h .
+```
+
+
+build
+```
+$ ./build_roms.sh -j 4
+```
+
+test
+```
+$ ./romsG < roms_upwelling.in
+```
